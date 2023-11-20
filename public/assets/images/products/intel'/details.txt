@@ -1,0 +1,4 @@
+Intel Core i7 12700KF
+12 cores, 20 threads, 3.60 GHz, 25 MB, Alder Lake, 190 Watts, BX8071512700KF
+
+The Intel Core i7-12700KF processor is derived from 12th generation Intel Alder Lake processors, it benefits from a hybrid architecture as well as support for the PCIe 5.0 standard and DDR5 memory for a future-oriented PC Gamer configuration. This model does not have an integrated graphics chipset and must be paired with a graphics card to deliver its full potential.

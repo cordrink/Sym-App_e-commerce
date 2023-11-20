@@ -1,19 +1,243 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
-        {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
-        {% block stylesheets %}
-            {{ encore_entry_link_tags('app') }}
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Jekyll v4.1.1">
+    <title>
+        {% block title %}
+            La boutiqueCMR
+        {% endblock %}
+    </title>
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"/>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        button.normal {
+            font-size: 14px;
+            font-weight: 600;
+            padding: 11px 18px;
+            color: #000;
+            background-color: #fff;
+            border-radius: 4px;
+            cursor: pointer;
+            border: none;
+            outline: none;
+            transition: 0.2s;
+        }
+
+        #banner {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background-image: url( {{ asset('assets/images/about/banner.png') }} );
+            width: 100%;
+            height: 60vh;
+            background-size: cover;
+            background-position: center;
+        }
+
+        #banner h4 {
+            color: #fff;
+            font-size: 20px;
+        }
+
+        #banner h2 {
+            color: #fff;
+            font-size: 40px;
+            padding: 10px 0;
+        }
+
+        #banner h2 span {
+            color: #ef3636;
+        }
+
+        #banner button:hover {
+            background: #088178;
+            color: #fff;
+        }
+
+        footer {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        footer .col {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+
+        footer .logo {
+            margin-bottom: 30px;
+        }
+
+        footer h4 {
+            font-size: 14px;
+            padding-bottom: 20px;
+        }
+
+        footer p {
+            font-size: 13px;
+            margin: 0 0 8px 0;
+        }
+
+        footer a {
+            font-size: 13px;
+            text-decoration: none;
+            color: #222;
+            margin-bottom: 10px;
+        }
+
+        footer .follow {
+            margin-top: 20px;
+        }
+
+        footer .follow i {
+            color: #465b52;
+            padding-right: 4px;
+            cursor: pointer;
+        }
+
+        footer .install .row img {
+            border: 1px solid #088178;
+            border-radius: 6px;
+        }
+
+        footer .install img {
+            margin: 10px 0 15px 0;
+        }
+
+        footer .follow i:hover,
+        footer a:hover {
+            color: #66bffa;
+        }
+
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+    </style>
+    <!-- Custom styles for this template -->
+    <link href="{{ asset('assets/css/carousel.css') }}" rel="stylesheet">
+    {% block javascript %}
+
+    {% endblock %}
+
+</head>
+<body>
+<header>
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <a class="navbar-brand" href="{{ path('app_home') }}"><img
+                    src="{{ asset('assets/img/photo_2023-07-20_16-13-10.jpg') }}" height="40" alt="logo"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+                aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="{{ path('app_product') }}">Nos produits</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="{{ path('app_contact') }}">Contact</a>
+                </li>
+            </ul>
+            <div class="navbar-item-custom">
+                {% if app.user %}
+                    <a href="{{ path('app_account') }}">Mon compte <small>({{ app.user.lastname }})</small></a> | <a
+                        href="{{ path('app_logout') }}">Deconnexion</a>
+                {% else %}
+                    <a href="{{ path('app_login') }}">Connexion</a> | <a
+                        href="{{ path('app_register') }}">Inscription</a>
+                {% endif %}
+            </div>
+            <a href="{{ path('app_cart') }}">
+                <img src="{{ asset('assets/img/shopping-cart.png') }}" class="cart-icon" alt="Mon panier">
+            </a>
+
+        </div>
+    </nav>
+</header>
+
+<main role="main">
+
+    {% if block('carousel') is defined %}
+        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+                {% for key,header in headers %}
+                    <li data-target="#myCarousel" data-slide-to="0" {% if key == 0 %}class="active"{% endif %}></li>
+                {% endfor %}
+            </ol>
+            <div class="carousel-inner">
+                {% for key,header in headers %}
+                    <div class="carousel-item {% if key == 0 %} active{% endif %}"
+                         style="background-image: url('/uploads/{{ header.illustration }}');background-size: cover">
+                        <div class="container">
+                            <div class="carousel-caption text-left">
+                                <h1>{{ header.title }}</h1>
+                                <p>{{ header.content }}</p>
+                                <p>
+                                    <a class="btn btn-lg btn-primary" href="{{ header.btnUrl}}"
+                                       role="button">{{ header.btnTitle }}</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    {% endif %}
+
+    <!-- Marketing messaging and featurettes
+    ================================================== -->
+    <!-- Wrap the rest of the page in another container to center all the content. -->
+
+    <div class="container marketing {% if block('carousel') is not defined %}mt-4{% endif %}">
+
+        {% block content %}
+
         {% endblock %}
 
-        {% block javascripts %}
-            {{ encore_entry_script_tags('app') }}
-        {% endblock %}
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-    </body>
+
+    </div><!-- /.container -->
+
+    <!-- FOOTER -->
+    <!-- FOOTER -->
+    <footer class="footer-costum">
+        <p>
+            &copy; 2017-2020 La Boutique Française<br/>
+            <small>La boutique 100% made in France<br/>
+                <a href="#">Privacy</a> &middot; <a href="#">Terms</a></small>
+        </p>
+    </footer>
+</main>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="{{ asset('assets/js/bootstrap.bundle.js') }}"></script>
+{% block script %}
+
+{% endblock %}
+
+</body>
 </html>

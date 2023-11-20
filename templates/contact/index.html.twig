@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ContactController!{% endblock %}
+
+{% block content %}
+<style>
+    #form-details {
+        display: flex;
+        justify-content: space-between;
+        margin: 30px;
+        padding: 80px;
+        border: 1px solid #e1e1e1;
+    }
+    #form-details form {
+        width: 65%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    span {
+        font-size: 12px;
+    }
+    #form-details form h2 {
+        font-size: 26px;
+        line-height: 35px;
+        padding: 20px 0;
+        color: #222;
+    }
+    #form-details form input, #form-details form textarea {
+        width: 100%;
+        padding: 12px 15px;
+        outline: none;
+        margin-bottom: 20px;
+        border: 1px solid #e1e1e1;
+    }
+    #form-details form button {
+        background-color: #088178;
+        color: #fff;
+    }
+</style>
+
+<div>
+    <section id="form-details">
+        <form action="">
+            <span>LAISSEZ NOUS VOTRE MESSAGE</span>
+            <h2>Nous adorons avoir de vos nouvelles</h2>
+            <input type="text" placeholder="Votre nom">
+            <input type="text" placeholder="E-mail">
+            <input type="text" placeholder="Sujet">
+            <textarea name="" id="" cols="30" rows="10" placeholder="Votre message"></textarea>
+            <button class="normal">Envoyer</button>
+        </form>
+    </section>
+</div>
+    <hr>
+{% endblock %}

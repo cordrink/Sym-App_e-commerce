@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block carousel %}{% endblock %}
+
+{% block content %}
+    <h3>Nos meilleurs ventes</h3>
+    <p>Decovrez les articles les plus vendus</p>
+    <div class="row">
+        {% for product in products %}
+            <div class="col-md-3">
+                {% include 'product/single_produc.html.twig' %}
+            </div>
+        {% endfor %}
+    </div><!-- /.row -->
+    <hr>
+
+    <section id="banner" class="container-fluidnt">
+        <h4>Produit a coûts bas</h4>
+        <h2>Des reduction allant jusqu'à <span>70% off</span> </h2>
+        <button class="normal">Nous contacter</button>
+    </section>
+
+
+    <!-- START THE FEATURETTES -->
+
+    <hr class="featurette-divider">
+
+    <h3>Nos meilleurs ventes</h3>
+    <p>Decovrez les articles les plus vendus</p>
+    <div class="row">
+        {% for product in productsM %}
+            <div class="col-md-3">
+                {% include 'product/single_produc.html.twig' %}
+            </div>
+        {% endfor %}
+    </div><!-- /.row -->
+
+    <hr class="featurette-divider">
+
+    <h3>Materiels informatiques</h3>
+    <p>Decovrez les articles les plus vendus</p>
+    <div class="row">
+        {% for product in productsL %}
+            <div class="col-md-3">
+                {% include 'product/single_produc.html.twig' %}
+            </div>
+        {% endfor %}
+    </div><!-- /.row -->
+
+    <hr class="featurette-divider">
+
+{% endblock %}
+

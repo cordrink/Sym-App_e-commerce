@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mon compte la boutiqueCMR{% endblock %}
+
+{% block content %}
+    <h1>Mon compte</h1>
+    Bienvenue {{ app.user.lastname }} dans votre compte. <br>
+    C'est dans cet espace que vous allez pouvoir gerer toutes vos informations.
+    <hr>
+    {% if is_granted('ROLE_ADMIN') %}
+        - <a href="{{ path('admin') }}">Vous etes un administrateur, accedez au backoffice?</a><br>
+    {% endif %}
+    - <a href="{{ path('app_account_password') }}">Modifer mon mot de passe</a><br>
+    - <a href="{{ path('app_account_address') }}">Gerer mes adresses</a><br>
+    - <a href="{{ path('app_account_order') }}">Mes commandes</a>
+
+{% endblock %}
