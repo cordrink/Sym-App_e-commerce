@@ -93,11 +93,6 @@ Les contributions sont bienvenues ! Pour proposer des améliorations :
 
 ---
 
-## Licence
-Ce projet est sous licence MIT. Voir le fichier `LICENSE` pour plus d’informations.
-
----
-
 ## Contact
 Pour toute question ou suggestion, contactez-moi via GitHub : [cordrink](https://github.com/cordrink) ou ouvrez une issue sur le dépôt.
 
