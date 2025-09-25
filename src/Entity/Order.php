@@ -50,12 +50,12 @@ class Order
         $this->orderDetails = new ArrayCollection();
     }
 
-    public function getTotal()
+    public function getTotal(): float|null
     {
         $total = null;
 
         foreach ($this->getOrderDetails()->getValues() as $product) {
-            $total = $total + ($product->getPrice() * $product->getQuantity());
+            $total += ($product->getPrice() * $product->getQuantity());
         }
 
         return $total;

@@ -18,6 +18,26 @@ Sym-App E-commerce est une application web développée avec Symfony 6, conçue 
 
 ---
 
+## Captures d'Écran
+Quelques vues de l'application :
+
+- **Back office de gestion** :
+  ![Back office easy admin](docs/screenshots/Back_office_de%20_gestion.png)
+
+- **Gestion de panier** :
+  ![Gestion de panier](docs/screenshots/Gestion_de_panier.png)
+
+- **Interface d'accueil** :
+  ![Page d'accueil](docs/screenshots/Interface_d'accuiel.png)
+
+- **Interface de connexion** :
+  ![Page de connexion](docs/screenshots/Interface_de_connexion.png)
+
+- **Interface de paiement stripe** :
+  ![Interface de paiement stripe](docs/screenshots/Interface_de_paiement_stripe.png)
+
+---
+
 ## Prérequis
 Pour exécuter ce projet, assurez-vous d’avoir les outils suivants installés :
 - PHP (>= 8.1)
@@ -25,6 +45,7 @@ Pour exécuter ce projet, assurez-vous d’avoir les outils suivants installés 
 - Composer
 - Symfony CLI (optionnel, mais recommandé)
 - Un compte Stripe pour l’API de paiement
+- Bootstrap
 
 ---
 
